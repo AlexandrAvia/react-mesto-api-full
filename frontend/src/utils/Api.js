@@ -6,20 +6,23 @@ class Api {
 
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
       body: JSON.stringify({
         name,
         about,
@@ -30,7 +33,8 @@ class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
       body: JSON.stringify({
         name,
         link,
@@ -41,14 +45,16 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -59,14 +65,16 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
   avatarUpdate(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._headersWithJwt(),
+      credentials: 'include',
       body: JSON.stringify({
         avatar: link,
       }),
@@ -79,12 +87,18 @@ class Api {
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   }
+
+   _headersWithJwt() {
+    return {authorization: `Bearer ${localStorage.getItem('token')}`, ...this._headers};
+  }
 }
 
+
+
 export const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-39",
+  // baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`,
+  baseUrl: `${'//localhost:3001'}`,
   headers: {
-    authorization: "23278c00-7abd-40c5-8d58-472e905cc065",
     "Content-Type": "application/json",
   },
 });

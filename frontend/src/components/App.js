@@ -149,7 +149,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setIsRegistrationSuccess(true);
-          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("token", data.token);
           tokenCheck();
         }
       })
@@ -163,7 +163,7 @@ function App() {
   };
 
   const tokenCheck = () => {
-    let jwt = localStorage.getItem("jwt");
+    let jwt = localStorage.getItem("token");
     if (jwt) {
       auth
         .checkToken(jwt)

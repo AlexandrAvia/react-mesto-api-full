@@ -6,6 +6,8 @@ const BadRequestError = require('../errors/bad-req-err');
 const UnauthorizedError = require('../errors/unauthorized-err');
 const ConflictError = require('../errors/conflict-err');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
@@ -107,7 +109,7 @@ const login = (req, res, next) => {
       // создадим токен
       const token = jwt.sign(
         { _id: user._id },
-        'super-puper-strong-secret',
+        NODE_ENV === 'production' ? JWT_SECRET : 'super-puper-strong-secret',
         { expiresIn: '7d' },
       );
       // вернём токен
