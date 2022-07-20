@@ -170,7 +170,7 @@ function App() {
         .then((res) => {
           if (res) {
             let userData = {
-              email: res.data.email,
+              email: res.email,
             };
 
             setLoggedIn(true);

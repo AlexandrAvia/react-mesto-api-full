@@ -74,9 +74,7 @@ const profileUpdate = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Запрашиваемый пользователь не найден');
       }
-      res.send({
-        data: user,
-      });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -124,9 +122,7 @@ const getCurrentUser = (req, res, next) => {
       if (!user) {
         throw new UnauthorizedError('Запрашиваемый пользователь не найден');
       }
-      res.send({
-        data: user,
-      });
+      res.send(user);
     })
     .catch(next);
 };
