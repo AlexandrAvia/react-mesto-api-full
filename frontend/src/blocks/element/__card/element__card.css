@@ -1,0 +1,8 @@
+.element__card {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  max-width: 282px;
+  min-height: 361px;
+  position: relative;
+}

@@ -1,0 +1,11 @@
+.popup__fieldset {
+  min-height: 64px;
+}
+
+.popup__fieldset:first-of-type {
+  margin-top: 54px;
+}
+
+.popup__fieldset:last-of-type {
+  margin-bottom: 10px;
+}

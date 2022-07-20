@@ -1,0 +1,33 @@
+.profile__avatar {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-right: 30px;
+  background-size: cover;
+  position: relative;
+}
+
+.profile__avatar::before {
+  background: no-repeat center/26px url(../../../images/avatarhovericon.png) rgba(0, 0, 0, 0.8);
+  position: absolute;
+  content: "";
+  left: -1px;
+  top: -1px;
+  width: 102%;
+  height: 102%;
+  border-radius: 50%;
+  transition: opacity 0.8s ease;
+  opacity: 0;
+}
+
+.profile__avatar:hover::before {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 880px) {
+  .profile__avatar {
+    margin-bottom: 22px;
+    margin-right: 0;
+  }
+}

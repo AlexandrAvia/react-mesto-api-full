@@ -1,0 +1,12 @@
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  min-width: 320px;
+  max-width: 880px;
+  color: white;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+body {
+  background-color: black;
+}
