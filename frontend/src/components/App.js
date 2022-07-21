@@ -157,9 +157,6 @@ function App() {
         console.log(err);
         setIsRegistrationSuccess(false);
       })
-      .finally(() => {
-        setInfoTooltipPopupOpen(true);
-      });
   };
 
   const tokenCheck = () => {
